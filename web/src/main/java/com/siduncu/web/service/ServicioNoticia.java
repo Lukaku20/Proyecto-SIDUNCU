@@ -72,6 +72,7 @@ public class ServicioNoticia {
         Optional<Noticia> respuesta = repoNoti.findById(id);
         Noticia noticia = respuesta.get();
         if (respuesta.isPresent()) {
+            servicioImagen.borrar(noticia.getImagen().getId());
             repoNoti.delete(noticia);
             System.out.println("Fue eliminada con éxito");
         }

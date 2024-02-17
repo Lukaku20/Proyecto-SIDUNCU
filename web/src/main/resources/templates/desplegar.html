@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <p th:text="${noticia.fecha}"></p>
                 <p th:text="${noticia.antetitulo}"></p>
                 <p th:text="${noticia.bajada}"></p>
-                <img th:src="@{'/imagen/noticia/' + ${noticia.imagen.id}}" alt="Imagen de la Noticia"/>
+                <img th:src="@{'/imagen/noticia/' + ${noticia.id}}" alt="Imagen de la Noticia"/>
 
                 <p th:text="${noticia.contenido}"></p>
                 <!-- Puedes agregar más detalles de la noticia según sea necesario -->
