@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+FORMULARIO DONDE SE CREA LA NOTICIA
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/head :: head}"></head> 
+    <body>
+        <header th:replace="~{fragments/header :: header}"></header>
+        <div>
+            <h2>Formulario</h2>
+            <form th:action="@{/crear}" method="post" enctype="multipart/form-data">
+                <div>
+                    <div><input type="titulo" class="form-control" id="titulo" name="titulo"
+                                placeholder="Escribe aqui el titulo" required th:value="${titulo}"></div><!-- TITULO --><br>
+                    <div><input type="antetitulo" class="form-control" id="antetitulo" name="antetitulo"
+                                placeholder="Escribe aqui el antetitulo o epigrafe" required th:value="${antetitulo}"></div><!-- ANTETITULO --><br>
+                    <div><input type="bajada" class="form-control" id="bajada" name="bajada"
+                                placeholder="Escribe aqui la bajada" required th:value="${bajada}"></div><!-- BAJADA --><br>
+
+                    <div><textarea rows="8" cols="100" type="contenido" class="form-control" id="contenido" name="contenido"
+                                   placeholder="Escribe aqui el contenido" required th:value="${contenido}"></textarea></div><!-- CONTENIDO --><br>
+                    <div><select class="form-select" aria-label="Default select example" name="categoria"
+                                 required th:value="${categoria}">
+                            <option selected>Seleccione Categoria</option>
+                            <option value="SOCIAL">Social</option>
+                            <option value="GREMIAL">Gremial</option>
+                            <option value="CULTURAL">Cultural</option>
+                            <option value="POLITICA">Politica</option>
+                            <option value="INTERNACIONAL">Internacional</option>
+
+                        </select></div><!-- CATEGORIA --> <br>
+                    <div>
+                        <label for="formFile" class="form-label">Si lo desea, ingrese una foto de
+                            la noticia</label>
+                        <input class="form-control" type="file" id="formFile" name="archivo" >
+                    </div> <!-- IMAGEN --> <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input type="submit" class="btn btn-outline-dark" value="Guardar">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+    </body>
+</html>

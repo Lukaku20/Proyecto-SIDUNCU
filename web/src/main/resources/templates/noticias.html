@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+PANEL DONDE SE ADMINISTRA LAS NOTICIAS, SE ORDENAN, SE CATEGORIZAN Y MODIFICAN.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/head :: head}"></head> 
+    <body>
+        <header th:replace="~{fragments/header :: header}"></header>
+        <main>
+            <h2>Listado de Noticias</h2>
+            <div> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Antetitulo</th>
+                            <th>Titulo</th>
+                            <th>Entrada</th>
+                            <th>Categoria</th>
+                            <th>Nota</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="noticia : ${noticias}">
+                        <tr>
+                            <th th:text="${noticia.antetitulo}"></th>
+                            <td scope="row" th:text="${noticia.titulo}"></td>
+                            <td th:text="${noticia.bajada}"></td>
+                            <td th:text="${noticia.categoria}"></td>                            
+                            <td th:text="${noticia.contenido}"></td>
+                            <td>
+                                <a th:href="@{/noticia/__${noticia.id}__}"> Ver más </a>
+                            </td>
+
+                            <td>
+                                <form th:action="@{/eliminarNoticia/__${noticia.id}__}" method="POST">
+                                    <button type="submit" class="primary" >Eliminar noticia</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </main>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+    </body>
+</html>
