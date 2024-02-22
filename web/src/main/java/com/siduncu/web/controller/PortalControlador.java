@@ -26,6 +26,11 @@ public class PortalControlador {
     private ServicioNoticia notiService;
 
     @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+    
+    @GetMapping("/panel")
     public String verPanel() {
         return "panel";
     }
