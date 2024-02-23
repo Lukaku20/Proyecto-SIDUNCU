@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <li><img src="/image/siduncu-gremio.jpg" loading="lazy" alt="..."></li>
                         <li><img src="/image/portada.jpg"  loading="lazy" alt="..."></li>
                         <li><img src="/image/uncuyo.jpg" loading="lazy" alt="..."></li>
-                        
+
                     </ul>
 
                     <button type="button" class="slider-nav" aria-label="Go left"></button>
@@ -38,16 +38,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
                 </div>
             </div>
+            <div>
+                <div class="row mb-2">
+                    <div class="col-md-6" th:each="noticia : ${listaTop}">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary-emphasis" th:text="${noticia.categoria}"></strong>
+                                <h3 class="mb-0" th:text="${noticia.titulo}"></h3>
+                                <div class="mb-1 text-body-secondary" th:text="${noticia.fecha}"></div>
+                                <p class="card-text mb-auto" th:text="${noticia.bajada}">.</p>
+                                <a th:href="@{/noticia/__${noticia.id}__}" class="icon-link gap-1 icon-link-hover stretched-link">
+                                    Continue reading
+                                    <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                                </a>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <!-- Acceder a la imagen de la noticia -->
+                                <img th:src="@{/imagen/noticia/__${noticia.id}__}" class="bd-placeholder-img" width="200" height="250" alt="Thumbnail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside>
 
-            <aside>
+                </aside>
 
-            </aside>
+            </div>
 
 
 
         </main>
-        
-         <footer th:replace="~{fragments/footer :: footer}"></footer>
-         
+
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+
     </body>
 </html>

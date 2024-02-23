@@ -101,7 +101,10 @@ public class ServicioNoticia {
         return repoNoti.findAllWithImages();
     }
     //noticia con imagen
-    
+    public List<Noticia> obtenetTop(){
+        //Metodo para llamar repo funcion top
+        return repoNoti.findTop2();
+    }
     public Noticia getOneWithImage(String id) {
         Noticia noticia = repoNoti.findById(id).orElse(null);
         if (noticia != null) {

@@ -26,7 +26,11 @@ public class PortalControlador {
     private ServicioNoticia notiService;
 
     @GetMapping("/")
-    public String home(){
+    public String home(ModelMap model){
+        List<Noticia> lista = notiService.obtenerNoticiasConImagenes();
+        List<Noticia> listaTop = notiService.obtenetTop();
+        model.addAttribute("lista", lista);
+        model.addAttribute("listaTop", listaTop);
         return "home";
     }
     
