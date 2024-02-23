@@ -39,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
             <div>
-                <div class="row mb-2">
+                <div class="row mb-3">
                     <div class="col-md-6" th:each="noticia : ${listaTop}">
                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
@@ -58,12 +58,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <!-- Contenido del aside -->
+                        
+                        
+                        
+                        <aside>
+                            <h2>Contenido en el lado derecho</h2>
+                            <!-- Lista de titulos de noticias -->
+                            <ul>
+                                <li th:each="noticia : ${lista}" th:text="${noticia.titulo}"></li>
+                            </ul>
+                        </aside>
+                    </div>
                 </div>
-                <aside>
-
-                </aside>
-
             </div>
+
 
 
 
