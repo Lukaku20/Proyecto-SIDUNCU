@@ -21,5 +21,7 @@ public interface NoticiaRepository extends JpaRepository<Noticia, String> {
 
     @Query(value = "SELECT * FROM noticia LIMIT 2", nativeQuery = true)
     List<Noticia> findTop2();
+    @Query (value = "SELECT * FROM noticia LIMIT 1", nativeQuery = true)
+    Noticia findTop();
 
 }//the end

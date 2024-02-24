@@ -113,5 +113,15 @@ public class ServicioNoticia {
         }
         return noticia;
     }
-
+    public Noticia enviarUltimaNoticia() {
+        Noticia noticia = repoNoti.findTop();
+        return noticia;
+    }
+//    public Noticia enviarReciente(){
+//        List<Noticia> noticias = repoNoti.findAllWithImages();
+//        for (Noticia noticia : noticias) {
+//            
+//            
+//        }
+//    }
 }
