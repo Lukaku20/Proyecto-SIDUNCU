@@ -11,35 +11,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <main>
 
-          
-                <div class="swiffy-slider slider-item-reveal slider-nav-round slider-item-ratio slider-item-ratio-21x9" id="slider1">
-                    <ul class="slider-container">
-                        <li><img src="/image/siduncu-gremio.jpg" loading="lazy" alt="..."></li>
-                        <li><img src="/image/portada.jpg"  loading="lazy" alt="..."></li>
-                        <li><img src="/image/uncuyo.jpg" loading="lazy" alt="..."></li>
+            <!-- Carrousel de imagenes --->
+            <div class="swiffy-slider slider-item-reveal slider-nav-round slider-item-ratio slider-item-ratio-21x9" id="slider1">
+                <ul class="slider-container">
+                    <li><img src="/image/siduncu-gremio.jpg" loading="lazy" alt="..."></li>
+                    <li><img src="/image/portada.jpg"  loading="lazy" alt="..."></li>
+                    <li><img src="/image/uncuyo.jpg" loading="lazy" alt="..."></li>
 
-                    </ul>
+                </ul>
 
-                    <button type="button" class="slider-nav" aria-label="Go left"></button>
-                    <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+                <button type="button" class="slider-nav" aria-label="Go left"></button>
+                <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
 
-                    <div class="slider-indicators slider-indicators-square d-none d-md-flex">
-                        <button class="" aria-label="Go to slide"></button>
-                        <button aria-label="Go to slide" class=""></button>
-                        <button aria-label="Go to slide" class=""></button>
-                        <button aria-label="Go to slide" class="active"></button>
-                    </div>
-
-                    <div class="slider-indicators slider-indicators-sm slider-indicators-dark slider-indicators-round d-md-none slider-indicators-highlight">
-                        <button class="" aria-label="Go to slide"></button>
-                        <button aria-label="Go to slide" class=""></button>
-                        <button aria-label="Go to slide" class=""></button>
-                        <button aria-label="Go to slide" class="active"></button>
-                    </div>
+                <div class="slider-indicators slider-indicators-square d-none d-md-flex">
+                    <button class="" aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class="active"></button>
                 </div>
+
+                <div class="slider-indicators slider-indicators-sm slider-indicators-dark slider-indicators-round d-md-none slider-indicators-highlight">
+                    <button class="" aria-label="Go to slide"></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class=""></button>
+                    <button aria-label="Go to slide" class="active"></button>
+                </div>
+            </div>
             <!-- TARJETAS O CARTAS ----> 
             <div>
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col-md-6" th:each="noticia : ${listaTop}">
                         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
@@ -60,57 +60,93 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div>
                 </div>
             </div>
-            <div>
-            <article class="blog-post">
-                <h2 class="display-5 link-body-emphasis mb-1" th:text="${noticia1.titulo}"></h2>
-                <p class="blog-post-meta" th:text="${noticia1.fecha} "></p> <!---+ ' by ' + ${noticia1.autor}-->
+            <!--- Articulos estilo Blog ---->
+            <div class="row g-5">
+                <div class="col-md-8">
+      <h3 class="favorite">
+        ¡¡¡¡últimas novedades!!!
+      </h3>
+           
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1" th:text="${noticia1.titulo}"></h2>
+                    <p class="blog-post-meta" th:text="${noticia1.fecha} "></p> <!---+ ' by ' + ${noticia1.autor}-->
 
-                <p th:text="${noticia1.antetitulo}"></p>
-                <hr>
-                <p th:text="${noticia1.contenido}"></p>
+                    <p th:text="${noticia1.antetitulo}"></p>
+                    <hr>
+                    <p th:text="${noticia1.contenido}"></p>
 
-                <div th:if="${noticia1.bajada}">
-                    <h2>Descripción</h2>
-                    <p th:text="${noticia1.bajada}"></p>
-                </div>
-                                <img th:src="@{'/imagen/noticia/' + ${noticia1.id}}" alt="Imagen de la Noticia"/>
+                    <div th:if="${noticia1.bajada}">
+                        <h2>Descripción</h2>
+                        <p th:text="${noticia1.bajada}"></p>
+                    </div>
+                    <img th:src="@{'/imagen/noticia/' + ${noticia1.id}}" alt="Imagen de la Noticia"/>
 
 
-                <!-- Otro contenido de la noticia aquí, como blockquotes, listas, etc. -->
-            </article>
-            
-            
-   <!-- Contenido a las derecha-->
-<div class="col-md-4">
-    <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4 mb-3 bg-body-tertiary rounded">
-            <h4 class="fst-italic">Acerca de</h4>
-            <p class="mb-0">Personaliza esta sección para contarles a tus visitantes un poco sobre tu publicación, escritores, contenido, o algo más completamente. Totalmente a tu elección.</p>
-        </div>
+                    <!-- Otro contenido de la noticia aquí, como blockquotes, listas, etc. -->
+                </article>
+                <!-- Contenido a las derecha-->
+                <div class="col-md-4">
+                    <!-- Barra lateral -->
+                    <div class="sidebar">
 
-        <div>
-            <h4 class="fst-italic">Posts recientes</h4>
-            <ul class="list-unstyled">
-                <!-- Aquí podrías listar los títulos de noticias recientes -->
-                <!-- Este es solo un ejemplo, puedes personalizarlo según tus necesidades -->
-                <li th:each="noticia : ${listaSinUltima}">
-                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                        <div class="col-lg-8">
-                            <h6 class="mb-0" th:text="${noticia.titulo}"></h6>
-                            <small class="text-body-secondary" th:text="${noticia.fecha}"></small>
+                    <div class="position-sticky" style="top: 2rem;">
+                        <div class="p-4 mb-3 bg-body-tertiary rounded">
+                            <h4 class="highlighted">Acerca de</h4>
+                            <p class="mb-0">Personaliza esta sección para contarles a tus visitantes un poco sobre tu publicación, escritores, contenido, o algo más completamente. Totalmente a tu elección.</p>
                         </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
 
-</div>
-    </main>
+                        <div>
+                            <h4 class="highlighted">Posts recientes</h4>
+                            <ul class="list-unstyled">
+                                <!-- Aquí podrías listar los títulos de noticias recientes -->
+                                <!-- Este es solo un ejemplo, puedes personalizarlo según tus necesidades -->
+                                <li th:each="noticia : ${listaSinUltima}">
+                                    <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+                                        <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                                        <div class="col-lg-8">
+                                            <h6 class="mb-0" th:text="${noticia.titulo}"></h6>
+                                            <small class="text-body-secondary" th:text="${noticia.fecha}"></small>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="highlighted">
+                    <h4 class="highlighted">Archives</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li><a href="#">March 2021</a></li>
+                        <li><a href="#">February 2021</a></li>
+                        <li><a href="#">January 2021</a></li>
+                        <li><a href="#">December 2020</a></li>
+                        <li><a href="#">November 2020</a></li>
+                        <li><a href="#">October 2020</a></li>
+                        <li><a href="#">September 2020</a></li>
+                        <li><a href="#">August 2020</a></li>
+                        <li><a href="#">July 2020</a></li>
+                        <li><a href="#">June 2020</a></li>
+                        <li><a href="#">May 2020</a></li>
+                        <li><a href="#">April 2020</a></li>
+                    </ol>
+                </div>
 
-    <footer th:replace="~{fragments/footer :: footer}"></footer>
+                <div class="highlighted">
+                    <h4 class="highlighted">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div>
+            </div>
+          
+            
+        </main>
 
-</body>
+        <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+    </body>
 </html>
