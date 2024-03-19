@@ -39,7 +39,7 @@ public class Noticia {
     private LocalDate fecha;
 
     public Noticia() {
-        this.fecha = LocalDate.now();
+       
     }
     
     

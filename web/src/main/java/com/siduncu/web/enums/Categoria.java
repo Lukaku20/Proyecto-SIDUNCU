@@ -8,6 +8,6 @@ package com.siduncu.web.enums;
 
 public enum Categoria {
     
-    SOCIAL, GREMIAL, CULTURAL, POLITICA, INTERNACIONAL
+    SOCIAL, GREMIAL, CULTURAL, POLITICA, INTERNACIONAL, BENEFICIO , INSTITUCIONAL
     
 }//the end
