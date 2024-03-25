@@ -55,9 +55,9 @@ public class PortalControlador {
 
     @PostMapping("/crear")
     public String crearNoticia(MultipartFile archivo, @RequestParam String titulo, @RequestParam String antetitulo,
-            String bajada, String contenido, Categoria categoria) {
+            String bajada, String contenido, Categoria categoria, int ano, int mes, int dia) {
         try {
-            notiService.crearNoticia(antetitulo, titulo, bajada, contenido, categoria, archivo);
+            notiService.crearNoticia(antetitulo, titulo, bajada, contenido, categoria, archivo, ano, mes, dia);
             return "redirect:/";
         } catch (Exception e) {
             System.out.println(e.getMessage());
