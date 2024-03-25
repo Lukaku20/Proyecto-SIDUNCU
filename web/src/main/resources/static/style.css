@@ -3,7 +3,7 @@
     justify-content: space-between; /* Espacio entre la sección y la barra lateral */
 }
 .sidebar {
-    width: 300px;
+    width: 400px;
     background-color: #f0f0f0;
     padding: 20px;
 }

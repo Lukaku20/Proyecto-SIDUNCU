@@ -19,9 +19,9 @@ public interface NoticiaRepository extends JpaRepository<Noticia, String> {
     @Query("SELECT n FROM Noticia n LEFT JOIN FETCH n.imagen")
     List<Noticia> findAllWithImages();
 
-    @Query(value = "SELECT * FROM noticia LIMIT 4", nativeQuery = true)
+    @Query(value = "SELECT * FROM noticia ORDER BY fecha DESC LIMIT 4", nativeQuery = true)
     List<Noticia> findTop4();
-    @Query (value = "SELECT * FROM noticia LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM noticia ORDER BY fecha DESC LIMIT 1", nativeQuery = true)
     Noticia findTop();
 
 }//the end
