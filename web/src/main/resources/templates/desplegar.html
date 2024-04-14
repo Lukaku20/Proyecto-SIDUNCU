@@ -3,22 +3,24 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head th:replace="~{fragments/head :: head}"></head> 
-    <body>
-        <main>
-            <header th:replace="~{fragments/header :: header}"></header>
-            <div>
-                <h1 th:text="${noticia.titulo}"></h1>
-                <p th:text="${noticia.fecha}"></p>
-                <p th:text="${noticia.antetitulo}"></p>
-                <p th:text="${noticia.bajada}"></p>
-                <img th:src="@{'/imagen/noticia/' + ${noticia.imagen.id}}" alt="Imagen de la Noticia"/>
-
-                <p th:text="${noticia.contenido}"></p>
+<body>
+    <main>
+        <header th:replace="~{fragments/header :: header}"></header>
+        <div class="container">
+            <article class="news-article">
+                <h1 class="news-title" th:text="${noticia.titulo}"></h1>
+                <p class="news-date" th:text="${noticia.fecha}"></p>
+                <p class="news-subtitle" th:text="${noticia.antetitulo}"></p>
+                <p class="news-summary" th:text="${noticia.bajada}"></p>
+                <img class="news-image" th:src="@{'/imagen/noticia/' + ${noticia.id}}" alt="Imagen de la Noticia"/>
+                <p class="news-content" th:text="${noticia.contenido}"></p>
                 <!-- Puedes agregar más detalles de la noticia según sea necesario -->
-            </div>
-        </main>
-        <footer th:replace="~{fragments/footer :: footer}"></footer>
-    </body>
+            </article>
+        </div>
+         <footer th:replace="~{fragments/footer :: footer}"></footer>
+    </main>
+</body>
 </html>

@@ -7,6 +7,8 @@ import com.siduncu.web.model.Image;
 import com.siduncu.web.model.Noticia;
 import com.siduncu.web.repositories.NoticiaRepository;
 import jakarta.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +54,7 @@ public class ServicioNoticia {
     }
 
     @Transactional
-    public void crearNoticia(String antetitulo, String titulo, String bajada, String contenido, Categoria categoria, MultipartFile archivo) throws MyException {
+    public void crearNoticia(String antetitulo, String titulo, String bajada, String contenido, Categoria categoria, MultipartFile archivo, int ano, int mes, int dia) throws MyException {
 
         validar(antetitulo, titulo, bajada, contenido, categoria);
         Noticia nueva = new Noticia();
@@ -61,6 +63,7 @@ public class ServicioNoticia {
         nueva.setCategoria(categoria);
         nueva.setContenido(contenido);
         nueva.setTitulo(titulo);
+        nueva.setFecha(LocalDate.of(ano, mes, dia));
         Image imagen = servicioImagen.guardar(archivo);
         nueva.setImagen(imagen);
         repoNoti.save(nueva);
@@ -72,6 +75,7 @@ public class ServicioNoticia {
         Optional<Noticia> respuesta = repoNoti.findById(id);
         Noticia noticia = respuesta.get();
         if (respuesta.isPresent()) {
+            servicioImagen.borrar(noticia.getImagen().getId());
             repoNoti.delete(noticia);
             System.out.println("Fue eliminada con éxito");
         }
@@ -100,7 +104,10 @@ public class ServicioNoticia {
         return repoNoti.findAllWithImages();
     }
     //noticia con imagen
-    
+    public List<Noticia> obtenetTop(){
+        //Metodo para llamar repo funcion top
+        return repoNoti.findTop4();
+    }
     public Noticia getOneWithImage(String id) {
         Noticia noticia = repoNoti.findById(id).orElse(null);
         if (noticia != null) {
@@ -109,5 +116,15 @@ public class ServicioNoticia {
         }
         return noticia;
     }
-
+    public Noticia enviarUltimaNoticia() {
+        Noticia noticia = repoNoti.findTop();
+        return noticia;
+    }
+//    public Noticia enviarReciente(){
+//        List<Noticia> noticias = repoNoti.findAllWithImages();
+//        for (Noticia noticia : noticias) {
+//            
+//            
+//        }
+//    }
 }

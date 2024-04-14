@@ -1,0 +1,20 @@
+.mainContent {
+    display: flex;
+    justify-content: space-between; /* Espacio entre la sección y la barra lateral */
+}
+.sidebar {
+    width: 300px;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.favorite {
+    margin-bottom: 20px;
+}
+
+.highlighted {
+    color: blue;
+    text-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+}
+
+

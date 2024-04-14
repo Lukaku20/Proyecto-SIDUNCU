@@ -1,4 +1,3 @@
-
 package com.siduncu.web.repositories;
 
 import com.siduncu.web.model.Noticia;
@@ -11,12 +10,18 @@ import org.springframework.data.repository.query.Param;
  *
  * @author siduncuNotebook
  */
-public interface NoticiaRepository extends JpaRepository<Noticia, String>{
-    
+public interface NoticiaRepository extends JpaRepository<Noticia, String> {
+
     @Query("SELECT n FROM Noticia n WHERE n.titulo = :titulo ")
     public Noticia buscarPorTitulo(@Param("titulo") String titulo);
-     // Otra lógica del repositorio...
+    // Otra lógica del repositorio...
 
     @Query("SELECT n FROM Noticia n LEFT JOIN FETCH n.imagen")
     List<Noticia> findAllWithImages();
+
+    @Query(value = "SELECT * FROM noticia LIMIT 4", nativeQuery = true)
+    List<Noticia> findTop4();
+    @Query (value = "SELECT * FROM noticia LIMIT 1", nativeQuery = true)
+    Noticia findTop();
+
 }//the end

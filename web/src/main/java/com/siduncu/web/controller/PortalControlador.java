@@ -26,6 +26,24 @@ public class PortalControlador {
     private ServicioNoticia notiService;
 
     @GetMapping("/")
+    public String home(ModelMap model) {
+        List<Noticia> lista = notiService.obtenerNoticiasConImagenes();
+
+        // Excluir la última noticia de la lista
+        List<Noticia> listaSinUltima = lista.subList(0, lista.size() - 1);
+
+        List<Noticia> listaTop = notiService.obtenetTop();
+        model.addAttribute("lista", listaSinUltima); // Usar la lista sin la última noticia
+        model.addAttribute("listaSinUltima", listaSinUltima); // Mantener la lista original sin la última noticia
+        model.addAttribute("listaTop", listaTop);
+
+        // Agregar la última noticia por separado
+        Noticia noticia1 = notiService.enviarUltimaNoticia();
+        model.addAttribute("noticia1", noticia1);
+        return "home";
+    }
+
+    @GetMapping("/panel")
     public String verPanel() {
         return "panel";
     }
@@ -37,9 +55,9 @@ public class PortalControlador {
 
     @PostMapping("/crear")
     public String crearNoticia(MultipartFile archivo, @RequestParam String titulo, @RequestParam String antetitulo,
-            String bajada, String contenido, Categoria categoria) {
+            String bajada, String contenido, Categoria categoria, int ano, int mes, int dia) {
         try {
-            notiService.crearNoticia(antetitulo, titulo, bajada, contenido, categoria, archivo);
+            notiService.crearNoticia(antetitulo, titulo, bajada, contenido, categoria, archivo, ano, mes, dia);
             return "redirect:/";
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -66,5 +84,11 @@ public class PortalControlador {
         model.addAttribute("noticia", noticia);
         return "desplegar";
     }
-}
 
+    @GetMapping("/noticias/{id}")
+    public String mostrarNoticia(@PathVariable String id, ModelMap model) {
+        Noticia noticia = notiService.getOneWithImage(id);
+        model.addAttribute("noticia", noticia);
+        return "noticia"; // nombre de tu plantilla Thymeleaf
+    }
+}
