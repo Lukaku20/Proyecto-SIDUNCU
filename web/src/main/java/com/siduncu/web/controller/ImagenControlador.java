@@ -28,7 +28,7 @@ public class ImagenControlador {
     ServicioNoticia noticiaService;
 
     @GetMapping("/noticia/{id}")
-    public ResponseEntity<byte[]> imagen(@PathVariable String id) {
+    public ResponseEntity<byte[]> imagenUsuario(@PathVariable String id) {
         Noticia noti = noticiaService.getOneWithImage(id);
 
         if (noti != null && noti.getImagen() != null && noti.getImagen().getContenido() != null) {
